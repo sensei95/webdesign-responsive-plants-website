@@ -1,5 +1,5 @@
 /*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 /*=============== VARIABLES CSS ===============*/
 :root {
@@ -20,7 +20,7 @@
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "PT Sans", sans-serif;
+  --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -114,11 +114,45 @@ img {
 
 /*=============== THEME ===============*/
 /*========== Variables Dark theme ==========*/
+body.dark-theme {
+  --first-color-dark: hsl(var(--hue), 8%, 20%);
+  --title-color: hsl(var(--hue), 4%, 95%);
+  --text-color: hsl(var(--hue), 4%, 75%);
+  --body-color: hsl(var(--hue), 8%, 12%);
+  --container-color: hsl(var(--hue), 8%, 16%);
+}
+
+/*========== Button Dark/Light ==========*/
+.change-theme {
+  color: var(--title-color);
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.nav__btns {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 1rem;
+}
 
 /*========== 
 Color changes in some parts of 
 the website, in dark theme 
 ==========*/
+
+.dark-theme .steps__bg,
+.dark-theme .questions {
+  background-color: var(--first-color-dark);
+}
+
+.dark-theme .product__circle,
+.dark-theme .footer__subscribe {
+  background-color: var(--container-color);
+}
+
+.dark-theme .scroll-header {
+  box-shadow: 0 1px 4px hsla(var(--hue), 4%, 4%, 0.3);
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
@@ -158,7 +192,9 @@ the website, in dark theme
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
+  transition: 0.4s; /*For animation dark mode*/
 }
+
 /*=============== NAV ===============*/
 .nav {
   height: var(--header-height);
@@ -175,7 +211,7 @@ the website, in dark theme
 
 .nav__logo {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: -1px;
   display: inline-flex;
   align-items: center;
@@ -239,30 +275,46 @@ the website, in dark theme
 }
 
 /* Show menu */
-.nav__menu.show-menu {
+.show-menu {
   right: 0;
 }
 
 /* Change background header */
-.header.scroll-header {
-  box-shadow: 0 1px hsla(var(--hue), 4%, 15%, 0.1);
-  /* background-color: var(--first-color); */
+.scroll-header {
+  box-shadow: 0 1px 4px hsla(var(--hue), 4%, 15%, 0.1);
 }
 
 /* Active link */
+.active-link {
+  position: relative;
+  color: var(--first-color);
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background-color: var(--first-color);
+}
 
 /*=============== HOME ===============*/
 .home {
-  padding: 3.5re 0 2rem;
+  padding: 3.5rem 0 2rem;
 }
+
 .home__container {
   position: relative;
   row-gap: 2rem;
 }
+
 .home__img {
   width: 200px;
   justify-self: center;
 }
+
 .home__title {
   font-size: var(--big-font-size);
   line-height: 140%;
@@ -284,7 +336,7 @@ the website, in dark theme
 
 .home__social-follow {
   font-weight: var(--font-medium);
-  font-size: var(--small-font-size);
+  font-size: var(--smaller-font-size);
   color: var(--first-color);
   position: relative;
   transform: rotate(90deg);
@@ -317,7 +369,6 @@ the website, in dark theme
 }
 
 /*=============== BUTTONS ===============*/
-
 .button {
   display: inline-block;
   background-color: var(--first-color);
@@ -331,12 +382,13 @@ the website, in dark theme
 .button:hover {
   background-color: var(--first-color-alt);
 }
+
 .button__icon {
   transition: 0.3s;
 }
 
 .button:hover .button__icon {
-  transform: translateX(0.25rem) !important;
+  transform: translateX(0.25rem);
 }
 
 .button--flex {
@@ -344,17 +396,21 @@ the website, in dark theme
   align-items: center;
   column-gap: 0.5rem;
 }
+
 .button--link {
   color: var(--first-color);
-  font-weight: var(--font-semi-bold);
+  font-weight: var(--font-medium);
 }
+
 .button--link:hover .button__icon {
   transform: translateX(0.25rem);
 }
+
 /*=============== ABOUT ===============*/
 .about__container {
   row-gap: 2rem;
 }
+
 .about__img {
   width: 280px;
   justify-self: center;
@@ -379,6 +435,7 @@ the website, in dark theme
   column-gap: 0.5rem;
   font-size: var(--small-font-size);
 }
+
 .about__details-icon {
   font-size: 1rem;
   color: var(--first-color);
@@ -391,6 +448,7 @@ the website, in dark theme
   padding: 3rem 2rem 2rem;
   border-radius: 1rem;
 }
+
 .steps__container {
   gap: 2rem;
   padding-top: 1rem;
@@ -421,9 +479,11 @@ the website, in dark theme
   font-size: var(--h3-font-size);
   margin-bottom: var(--mb-0-5);
 }
-.steps__card-desrciption {
+
+.steps__card-description {
   font-size: var(--small-font-size);
 }
+
 .steps__card:hover .steps__card-number {
   transform: translateY(-0.25rem);
 }
@@ -432,11 +492,13 @@ the website, in dark theme
 .product__description {
   text-align: center;
 }
+
 .product__container {
   padding: 3rem 0;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 2.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 3rem;
 }
+
 .product__card {
   display: grid;
   position: relative;
@@ -475,6 +537,7 @@ the website, in dark theme
 .product__button:hover {
   background-color: var(--first-color-alt);
 }
+
 .product__circle {
   width: 90px;
   height: 90px;
@@ -484,37 +547,46 @@ the website, in dark theme
   top: 18%;
   left: 5%;
 }
+
 .product__card:hover .product__img {
   transform: translateY(-0.5rem);
 }
+
 /*=============== QUESTIONS ===============*/
 .questions {
   background-color: var(--first-color-lighten);
 }
+
 .questions__container {
-  padding: 1.5rem 0;
   gap: 1.5rem;
+  padding: 1.5rem 0;
 }
+
 .questions__group {
   display: grid;
   row-gap: 1.5rem;
 }
+
 .questions__item {
   background-color: var(--container-color);
   border-radius: 0.25rem;
 }
+
 .questions__item-title {
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
 }
+
 .questions__icon {
-  font-size: 1.25em;
-  color: var(--text-color);
+  font-size: 1.25rem;
+  color: var(--title-color);
 }
+
 .questions__description {
-  font-size: var(--small-font-size);
-  padding: 0 1.25rem 1.25rem 2.5em;
+  font-size: var(--smaller-font-size);
+  padding: 0 1.25rem 1.25rem 2.5rem;
 }
+
 .questions__header {
   display: flex;
   align-items: center;
@@ -522,6 +594,7 @@ the website, in dark theme
   padding: 0.75rem 0.5rem;
   cursor: pointer;
 }
+
 .questions__content {
   overflow: hidden;
   height: 0;
@@ -535,6 +608,7 @@ the website, in dark theme
 .questions__content {
   transition: 0.3s;
 }
+
 .questions__item:hover {
   box-shadow: 0 2px 8px hsla(var(--hue), 4%, 15%, 0.15);
 }
@@ -554,21 +628,24 @@ the website, in dark theme
 .accordion-open .questions__icon {
   transform: rotate(45deg);
 }
+
 /*=============== CONTACT ===============*/
 .contact__container {
   row-gap: 3.5rem;
 }
+
 .contact__data {
   display: grid;
   row-gap: 2rem;
-  margin-bottom: var(--mb-2-5);
 }
+
 .contact__subtitle {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
   color: var(--text-color);
   margin-bottom: var(--mb-0-5);
 }
+
 .contact__description {
   display: inline-flex;
   align-items: center;
@@ -576,19 +653,23 @@ the website, in dark theme
   color: var(--title-color);
   font-weight: var(--font-medium);
 }
+
 .contact__icon {
   font-size: 1.25rem;
 }
+
 .contact__inputs {
   display: grid;
   row-gap: 2rem;
   margin-bottom: var(--mb-2-5);
 }
+
 .contact__content {
   position: relative;
   height: 3rem;
   border-bottom: 1px solid var(--text-color-light);
 }
+
 .contact__input {
   position: absolute;
   top: 0;
@@ -597,6 +678,9 @@ the website, in dark theme
   height: 100%;
   padding: 1rem 1rem 1rem 0;
   background: none;
+
+  color: var(--text-color);
+
   border: none;
   outline: none;
   z-index: 1;
@@ -610,17 +694,20 @@ the website, in dark theme
   color: var(--text-color-light);
   transition: 0.3s;
 }
-.contact__text {
+
+.contact__area {
   height: 7rem;
 }
-.contact__text textarea {
+
+.contact__area textarea {
   resize: none;
 }
+
 /*Input focus move up label*/
 .contact__input:focus + .contact__label {
   top: -0.75rem;
   left: 0;
-  font-size: var(--small-font-size);
+  font-size: var(--smaller-font-size);
   z-index: 10;
 }
 
@@ -628,21 +715,352 @@ the website, in dark theme
 .contact__input:not(:placeholder-shown).contact__input:not(:focus)
   + .contact__label {
   top: -0.75rem;
-  font-size: var(--small-font-size);
+  font-size: var(--smaller-font-size);
   z-index: 10;
 }
 
 /*=============== FOOTER ===============*/
+.footer__container {
+  row-gap: 3rem;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  color: var(--title-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: var(--mb-2-5);
+  transition: 0.3s;
+}
+
+.footer__logo-icon {
+  font-size: 1.15rem;
+  color: var(--first-color);
+}
+
+.footer__logo:hover {
+  color: var(--first-color);
+}
+
+.footer__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-1-5);
+}
+
+.footer__subscribe {
+  background-color: var(--first-color-lighten);
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+}
+
+.footer__input {
+  width: 70%;
+  padding: 0 0.5rem;
+  background: none;
+  color: var(--text-color);
+  border: none;
+  outline: none;
+}
+
+.footer__button {
+  padding: 1rem;
+}
+
+.footer__data {
+  display: grid;
+  row-gap: 0.75rem;
+}
+
+.footer__information {
+  font-size: var(--small-font-size);
+}
+
+.footer__social {
+  display: inline-flex;
+  column-gap: 0.75rem;
+}
+
+.footer__social-link {
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+.footer__social-link:hover {
+  transform: translateY(-0.25rem);
+}
+
+.footer__cards {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+.footer__card {
+  width: 35px;
+}
+
+.footer__copy {
+  text-align: center;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+  margin: 5rem 0 1rem;
+}
 
 /*=============== SCROLL UP ===============*/
+.scrollup {
+  position: fixed;
+  background-color: var(--first-color);
+  right: 1rem;
+  bottom: -30%;
+  display: inline-flex;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  z-index: var(--z-tooltip);
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.scrollup__icon {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.scrollup:hover {
+  background-color: var(--first-color-alt);
+  opacity: 1;
+}
 
 /* Show Scroll Up*/
+.show-scroll {
+  bottom: 3rem;
+}
 
 /*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background: hsl(var(--hue), 4%, 53%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--hue), 4%, 29%);
+  border-radius: 0.5rem;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 320px) {
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+
+  .home__img {
+    width: 180px;
+  }
+  .home__title {
+    font-size: var(--h1-font-size);
+  }
+
+  .steps__bg {
+    padding: 2rem 1rem;
+  }
+  .steps__card {
+    padding: 1.5rem;
+  }
+
+  .product__container {
+    grid-template-columns: 0.6fr;
+    justify-content: center;
+  }
+}
 
 /* For medium devices */
+@media screen and (min-width: 576px) {
+  .steps__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product__description {
+    padding: 0 4rem;
+  }
+  .product__container {
+    grid-template-columns: repeat(2, 170px);
+    justify-content: center;
+    column-gap: 5rem;
+  }
+
+  .footer__subscribe {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  body {
+    margin: 0;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+    column-gap: 3rem;
+  }
+  .nav__toggle,
+  .nav__close {
+    display: none;
+  }
+  .nav__list {
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+  .nav__menu {
+    margin-left: auto;
+  }
+
+  .home__container,
+  .about__container,
+  .questions__container,
+  .contact__container,
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home {
+    padding: 10rem 0 5rem;
+  }
+  .home__container {
+    align-items: center;
+  }
+  .home__img {
+    width: 280px;
+    order: 1;
+  }
+  .home__social {
+    top: 30%;
+  }
+
+  .questions__container {
+    align-items: flex-start;
+  }
+
+  .footer__container {
+    column-gap: 3rem;
+  }
+  .footer__subscribe {
+    width: initial;
+  }
+}
 
 /* For large devices */
+@media screen and (min-width: 992px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section {
+    padding: 8rem 0 1rem;
+  }
+  .section__title,
+  .section__title-center {
+    font-size: var(--h1-font-size);
+  }
+
+  .home {
+    padding: 13rem 0 5rem;
+  }
+  .home__img {
+    width: 350px;
+  }
+  .home__description {
+    padding-right: 7rem;
+  }
+
+  .about__img {
+    width: 380px;
+  }
+
+  .steps__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .steps__bg {
+    padding: 3.5rem 2.5rem;
+  }
+  .steps__card-title {
+    font-size: var(--normal-font-size);
+  }
+
+  .product__description {
+    padding: 0 16rem;
+  }
+  .product__container {
+    padding: 4rem 0;
+    grid-template-columns: repeat(3, 185px);
+    gap: 4rem 6rem;
+  }
+  .product__img {
+    width: 160px;
+  }
+  .product__circle {
+    width: 110px;
+    height: 110px;
+  }
+  .product__title,
+  .product__price {
+    font-size: var(--normal-font-size);
+  }
+
+  .questions__container {
+    padding: 1rem 0 4rem;
+  }
+  .questions__title {
+    text-align: initial;
+  }
+  .questions__group {
+    row-gap: 2rem;
+  }
+  .questions__header {
+    padding: 1rem;
+  }
+  .questions__description {
+    padding: 0 3.5rem 2.25rem 2.75rem;
+  }
+
+  .footer__logo {
+    font-size: var(--h3-font-size);
+  }
+  .footer__container {
+    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+  }
+  .footer__copy {
+    margin: 7rem 0 2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .home__social {
+    right: -3rem;
+    row-gap: 4.5rem;
+  }
+  .home__social-follow {
+    font-size: var(--small-font-size);
+  }
+  .home__social-follow::after {
+    width: 1.5rem;
+    right: -60%;
+  }
+  .home__social-link {
+    font-size: 1.15rem;
+  }
+
+  .about__container {
+    column-gap: 7rem;
+  }
+
+  .scrollup {
+    right: 3rem;
+  }
+}
