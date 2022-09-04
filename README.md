@@ -9,3 +9,4 @@
 
 
 ![plants website](/preview.png)
+ [Demo](https://elk-plantex.netlify.app)
